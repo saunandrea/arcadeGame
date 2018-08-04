@@ -58,16 +58,33 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 500) {
         this.x = -100;
     }
+    
+ 
+    let playerYMax = player.y + 142;
+    let playerYMin = player.y + 61;
+    let playerXMax = player.x + 84;
+    let playerXMin = player.x + 18;
+
+    let enemyYMax = this.y + 140;//147;
+    let enemyYMin = this.y + 80;//76;
+    let enemyXMax = this.x + 101;//147;
+    let enemyXMin = this.x + 5;//76;
+    
+
+    let yCollision = (((playerYMax > enemyYMin) && (playerYMax < enemyYMax)) || ((playerYMin > enemyYMin) && (playerYMin < enemyYMax)) || (playerYMin < enemyYMin && playerYMax > enemyYMax));
+    let xCollision = (((playerXMax > enemyXMin) && (playerXMax < enemyXMax)) || ((playerXMin > enemyXMin) && (playerXMin < enemyXMax)));
+
+
+    if (yCollision && xCollision){
+        console.log("hittttt!!!");
+    }
+
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 
 function Player()  {
     this.sprite = 'images/char-boy.png';
@@ -76,7 +93,7 @@ function Player()  {
 };
 
 Player.prototype.update = function(dt) {
-
+ //todo: not sure what supposed to do.
 };
 
 Player.prototype.handleInput = function(direction) {
