@@ -58,25 +58,22 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 500) {
         this.x = -100;
     }
-    
- 
+
     let playerYMax = player.y + 142;
     let playerYMin = player.y + 61;
     let playerXMax = player.x + 84;
     let playerXMin = player.x + 18;
 
-    let enemyYMax = this.y + 140;//147;
-    let enemyYMin = this.y + 80;//76;
-    let enemyXMax = this.x + 101;//147;
-    let enemyXMin = this.x + 5;//76;
+    let enemyYMax = this.y + 140;
+    let enemyYMin = this.y + 80;
+    let enemyXMax = this.x + 101;
+    let enemyXMin = this.x + 5;
     
-
     let yCollision = (((playerYMax > enemyYMin) && (playerYMax < enemyYMax)) || ((playerYMin > enemyYMin) && (playerYMin < enemyYMax)) || (playerYMin < enemyYMin && playerYMax > enemyYMax));
     let xCollision = (((playerXMax > enemyXMin) && (playerXMax < enemyXMax)) || ((playerXMin > enemyXMin) && (playerXMin < enemyXMax)));
 
-
     if (yCollision && xCollision){
-        console.log("hittttt!!!");
+        player.sendHome();
     }
 
 };
@@ -87,10 +84,17 @@ Enemy.prototype.render = function() {
 };
 
 function Player()  {
-    this.sprite = 'images/char-boy.png';
-    this.x = 225;
-    this.y = 400;
+    this.sprite = 'images/char-boy.png'; //todo: why won't the other characters work?
+    this.x = 205;
+    this.y = 340;
 };
+
+Player.prototype.sendHome = function(dt) {
+  //  let hit = 'images/hit.png'; //todo: why won't another image work? wanted to flash stars when hit.
+  //  ctx.drawImage(Resources.get(hit), this.x, this.y);
+    this.x = 205;
+    this.y = 340;
+   };
 
 Player.prototype.update = function(dt) {
  //todo: not sure what supposed to do.
@@ -98,16 +102,20 @@ Player.prototype.update = function(dt) {
 
 Player.prototype.handleInput = function(direction) {
     let scale = 10;
-    if (direction == "left") {
+    if (direction == "left" && (this.x + 18 - scale > 10)) {
         this.x -= scale;
     }
-    if (direction == "up") {
+    else if (direction == "up" && (this.y - scale > -20)) {
         this.y -= scale;
+        console.log(this.y);
+        if (this.y + 61 < 60) {
+            console.log("you wonnnn");
+        }
     }
-    if (direction == "right") {
+    else if (direction == "right" && (this.x + 84 + scale < (505 - scale)))  {
         this.x += scale;
     }
-    if (direction == "down") {
+    else if (direction == "down" && (this.y + 142 + scale < (600 - scale))) {
         this.y += scale;
     }
 }
