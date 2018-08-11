@@ -113,7 +113,7 @@ Player.prototype.handleInput = function(direction) {
             this.sendHome();
             document.querySelector(".win-container").classList.add('is-visible');
             setTimeout(function(){ document.querySelector(".win-container").classList.remove('is-visible'); }, 5000);
-            allEnemies.push(new Enemy(Math.random()*300,Math.random()*200,Math.random()*80))
+            allEnemies.push(new Enemy(Math.random()*300+1,Math.random()*200+1,Math.random()*80+1))
         }
     }
     else if (direction == "right" && (this.x + 84 + scale < (505 - scale)))  {
