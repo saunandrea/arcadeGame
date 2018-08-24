@@ -12,7 +12,7 @@
  * This engine makes the canvas' context (ctx) object globally available to make 
  * writing app.js a little simpler to work with.
  */
-
+"use strict";
 var Engine = (function (global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas

@@ -1,8 +1,16 @@
 frontend-nanodegree-arcade-game
 ===============================
+The game is copy of frogger with the goal the make it across the street to the water without getting hit. Instead of cars we have little bugs.
 
-Game automatically restarts. Sets player back at home upon colliding with bugs and upon making it to the water. 
-Upon making it to the water an additional enemy will be added to the game field so with each win the game becomes harder.
+To play:
+1) Download the zip file from GitHub.
+2) Unzip the file.
+3) Open index.html with your favorite browser and the game will automatically start.
+4) Use the arrow keys to navigate the across the street to safety.
+
+Each time you get hit you'll be sent back to home to try again. Infinite lives.
+Also each time you make it to the water, the game will restart and a new beetle will be added at a random spot and at a random speed to challenge you a little more. 
+
 Happy playing!
 
 
